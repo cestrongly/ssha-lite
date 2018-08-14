@@ -18,7 +18,8 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
-    <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
+    <div>getProductsAPI</div>
+    <div :text="getProductsAPI"></div>
   </div>
 </template>
 
@@ -29,7 +30,9 @@ export default {
   data () {
     return {
       motto: 'Hello World',
-      userInfo: {}
+      userInfo: {},
+      api: '',
+      getProductsAPI: ''
     }
   },
 
@@ -47,7 +50,7 @@ export default {
       wx.login({
         success: () => {
           wx.getUserInfo({
-            success: (res) => {
+            success: res => {
               this.userInfo = res.userInfo
             }
           })
@@ -62,6 +65,9 @@ export default {
   created () {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo()
+    const baseURL = process.env.API_BASE_URL
+    this.api = baseURL
+    this.getProductsAPI = `${baseURL}/products`
   }
 }
 </script>
