@@ -8,18 +8,33 @@
 
 <script>
 export default {
+  // 增加一个可从外部传入的属性initNum
+  props: {
+    initNum: {
+      type: Number,
+      default: 0
+    }
+  },
   data () {
     return {
-      num: 0
+      num: this.initNum // 使用传入的initNum值作为初始的点击数
     }
   },
 
   methods: {
     handleClick () {
       this.num += 1
+      this.notifyNum()
     },
     handleResetClick () {
       this.num = 0
+      this.notifyNum()
+    },
+    notifyNum () {
+      // 触发自定义事件 clicknum 子组件向父组件传递数据
+      this.$emit('clicknum', {
+        num: this.num
+      })
     }
   }
 }
