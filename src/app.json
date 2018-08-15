@@ -1,12 +1,38 @@
 {
   "pages": [
+    "pages/red-bag-generated/main",
     "pages/index/main",
     "pages/test1/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "第一个小程序",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#c96148",
+    "navigationBarTitleText": "包你说 - 语音红包",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "#99999",
+    "selectedColor": "#c96148",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/red-bag-generated/main",
+        "text": "发红包",
+        "iconPath": "static/assets/tip.png",
+        "selectedIconPath": "static/assets/tip-fill.png"
+      },
+      {
+        "pagePath": "pages/index/main",
+        "text": "更多好玩",
+        "iconPath": "static/assets/like.png",
+        "selectedIconPath": "static/assets/like-fill.png"
+      },
+      {
+        "pagePath": "pages/test1/main",
+        "text": "我的",
+        "iconPath": "static/assets/my.png",
+        "selectedIconPath": "static/assets/my-fill.png"
+      }
+    ]
   }
 }
