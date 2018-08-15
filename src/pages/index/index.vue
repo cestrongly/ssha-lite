@@ -52,7 +52,7 @@ export default {
   text-align: center;
 }
 .box {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .navlink {
   text-decoration: underline;

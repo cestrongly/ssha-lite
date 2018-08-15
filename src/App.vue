@@ -8,6 +8,6 @@ export default {
 
 <style>
 .container {
-  background-color: #ccc;
+  /* background-color: #ccc; */
 }
 </style>
