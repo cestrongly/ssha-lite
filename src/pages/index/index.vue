@@ -8,6 +8,8 @@
     <click-counter :init-num="30" @clicknum="handeClickNum"/>
     <click-counter :init-num="40" @clicknum="handeClickNum"/>
     <div class="box" :style="height">高度会变化</div>
+    <input type="text" v-model="inputValue">
+    <div>文本框的值:{{inputValue}}</div>
   </div>
   
 </template>
@@ -24,7 +26,8 @@ export default {
   data () {
     return {
       msg: 'Hello',
-      height: 'height: 0px'
+      height: 'height: 0px',
+      inputValue: 0
     }
   },
   methods: {
