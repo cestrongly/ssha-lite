@@ -2,14 +2,11 @@
   <div class="container" @click="clickHandle">
     <div class="message">{{msg}}</div>
     <!-- 使用 click-counter 组件 -->
-    <click-counter :init-num="10" @clicknum="handeClickNum"/>
-    <!-- 组件的复用 -->
-    <click-counter :init-num="20" @clicknum="handeClickNum"/>
-    <click-counter :init-num="30" @clicknum="handeClickNum"/>
-    <click-counter :init-num="40" @clicknum="handeClickNum"/>
-    <div class="box" :style="height">高度会变化</div>
-    <input type="text" v-model="inputValue">
-    <div>文本框的值:{{inputValue}}</div>
+    <click-counter :init-num="10" @clicknum="handeClickNum">
+      <input type="checkbox"> 禁用
+    </click-counter>
+    <div>计数结果: {{count}}</div>
+    <a href="/pages/test1/main" class="navlink">进入计数器页面</a>
   </div>
   
 </template>
@@ -17,6 +14,7 @@
 <script>
 // 导入 click-counter 组件
 import ClickCounter from '@/components/click-counter'
+import globalStore from '@/stores/global-store'
 
 export default {
   components: {
@@ -38,6 +36,11 @@ export default {
       console.log('>>>>>>>>>', data.num)
       this.height = `height: ${data.num}px`
     }
+  },
+  computed: {
+    count () {
+      return globalStore.state.count
+    }
   }
 }
 </script>
@@ -50,5 +53,8 @@ export default {
 }
 .box {
   border: 1px solid red;
+}
+.navlink {
+  text-decoration: underline;
 }
 </style>
