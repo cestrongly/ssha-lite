@@ -9,10 +9,11 @@ export default {
 <style>
 page {
   display: flex;
-  min-height: 100%;
-  /* background-color: #f1f1f1; */
+  background-color: #F8F8F8;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
-.container {
-  background-color: #fff;
+view {
+  word-break: break-all;
+  overflow: auto;
 }
 </style>

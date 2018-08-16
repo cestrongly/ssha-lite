@@ -1,60 +1,102 @@
 <template>
-  <div class="container" @click="clickHandle">
-    <div class="message">{{msg}}</div>
-    <!-- 使用 click-counter 组件 -->
-    <click-counter :init-num="10" @clicknum="handeClickNum">
-      <input type="checkbox"> 禁用
-    </click-counter>
-    <div>计数结果: {{count}}</div>
-    <a href="/pages/test1/main" class="navlink">进入计数器页面</a>
+  <div class="index">
+    <!-- slider -->
+    <div class="slider">
+      <swiper class="swiper"
+              :indicator-dots="indicatorDots"
+              :autoplay="autoplay"
+              :interval="interval"
+              :duration="duration">
+        <swiper-item class="swiper-item" v-for="(item,index) in swipers" :key="index">
+          <navigator :url="item.link" class="widget">
+            <image mode="cover" :src="item.pic" class="slide-image"/>
+          </navigator>
+        </swiper-item>
+      </swiper>  
+    </div>
+    <!-- end swiper -->
+    <!-- news -->
+    <div class="news">
+      <text class="news-title">新闻动态</text>
+      <navigator  v-for="(item,index) in news" :key="index" class="news-item__wrapper" :url="'/pages/news/news-details?id=' + item.id">
+        <div class="news-item line">
+          <div class="news-item-pic">
+            <image mode="widthFix" :src="item.pic" class="news-item-image"/>
+          </div>
+          <div class="news-item-words">
+            <div class="news-item-title"><text class="text">{{item.title}}</text></div>
+            <div class="news-item-content"><text class="text">{{item.content}}</text></div>
+          </div>  
+        </div>
+      </navigator>
+      <div class="widgets__list widgets__list_show">
+        <navigator class="widget__more">
+          <text class="new-more">查看更多</text>
+          <image class="widget__arrow" src="/static/assets/arrowright.png" mode="aspectFill"/>
+          <div class="widget__line widget__line_first"></div>
+        </navigator>
+      </div>
+    </div>
+    <!-- end news -->
+    <!-- <view class='search'>
+      <picker class="picker" bindchange="bindPickerChange" value="0" range="100">
+        <view class="pickercity darkgray f14">
+          柳州
+          <image class="image" src='/images/down_pick.png'/>
+        </view>
+      </picker>
+      <input class='search-input f14' type='text' confirm-type="search" bindconfirm="search" placeholder="输入门店名称或地址搜索" />
+    </view> -->
   </div>
-  
 </template>
-
 <script>
-// 导入 click-counter 组件
-import ClickCounter from '@/components/click-counter'
-import globalStore from '@/stores/global-store'
-
+import './index.scss'
 export default {
-  components: {
-    // 声明在当前组件下使用 counter-click 组件
-    ClickCounter
-  },
   data () {
     return {
-      msg: 'Hello',
-      height: 'height: 0px',
-      inputValue: 0
+      title: '江苏盛世华安智能科技有限公司',
+      swipers: [
+        {'pic': 'http://www.jsssha.com/wp-content/uploads/2017/01/video.jpeg', 'link': '/pages/video/video'},
+        {'pic': 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg', 'link': ''}
+      ],
+      indicatorDots: false,
+      autoplay: false,
+      interval: 5000,
+      duration: 1000,
+      // 新闻动态
+      news: [
+        {
+          'id': 0,
+          'pic': 'http://www.jsssha.com/wp-content/uploads/2016/12/4-300x250.jpg',
+          'title': '“创新发展 再创辉煌”盛世华安2016年度圣诞主题年会圆满落幕',
+          'content': '2016年，对于盛世华安而言是一个机遇与挑战并存的一年，更是收获的一年。这一年在公司领导层的正确领导和支持下，全体员工齐心协力，顽强进取，各方面的工作都取得了一定的成绩。'
+        },
+        {
+          'id': 1,
+          'pic': 'http://www.jsssha.com/wp-content/uploads/2016/12/2-1-300x250.jpg',
+          'title': 'CCIA第七届中国物联网产业与新型智慧城市年会圆满落幕，江苏盛世华安智能科技股份有限公司',
+          'content': '2016年12月16日，由工业和信息化部指导，中国通信工业协会主办，中国通信工业协会物联网应用分会承办的“第七届中国物联网产业与新型智慧城市年会”在北京万寿宾馆隆重召开。'
+        },
+        {
+          'id': 2,
+          'pic': 'http://www.jsssha.com/wp-content/uploads/2016/11/572057806235746054-300x250.jpg',
+          'title': '热烈祝贺东方金汇通成功申报软件企业',
+          'content': '苏州东方金汇通智能科技有限公司是江苏盛世华安智能科技股份有限公司旗下一家专业从事智能化系统、计算机软硬件、电子产品研发的全资子公司'
+        }
+      ]
     }
   },
-  methods: {
-    clickHandle () {
-      this.msg = 'Clicked!!!!!!'
-    },
-    handeClickNum (data) {
-      console.log('>>>>>>>>>', data.num)
-      this.height = `height: ${data.num}px`
-    }
-  },
-  computed: {
-    count () {
-      return globalStore.state.count
+  /**
+   * 小程序转发功能
+   */
+  onShareAppMessage () {
+    // return custom share data when user share.
+    console.log('onShareAppMessage')
+    return {
+      title: '盛世华安',
+      desc: '小程序',
+      path: '/pages/index/index'
     }
   }
 }
 </script>
-
-<style scoped>
-.message {
-  color: red;
-  padding: 10px;
-  text-align: center;
-}
-.box {
-  border: 1px solid red;
-}
-.navlink {
-  text-decoration: underline;
-}
-</style>

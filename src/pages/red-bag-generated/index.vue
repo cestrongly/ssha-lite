@@ -76,10 +76,10 @@ export default {
     getSetting () {
       let that = this
       wx.getSetting({
-        success: function (res) {
+        success (res) {
           if (res.authSetting['scope.userInfo']) {
             wx.getUserInfo({
-              success: function (res) {
+              success (res) {
                 console.log(res.userInfo)
                 that.userInfo = res.userInfo
                 that.isShow = false
