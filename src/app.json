@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/main",
-    "pages/test1/main"
+    "pages/contact/main",
+    "pages/index/main"
+    
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -21,10 +22,10 @@
         "selectedIconPath": "static/assets/index-selected.png"
       },
       {
-        "pagePath": "pages/index/main",
-        "text": "公司盛况",
-        "iconPath": "static/assets/index.png",
-        "selectedIconPath": "static/assets/index-selected.png"
+        "pagePath": "pages/contact/main",
+        "text": "联系我们",
+        "iconPath": "static/assets/contact.png",
+        "selectedIconPath": "static/assets/contact-selected.png"
       }
     ]
   }

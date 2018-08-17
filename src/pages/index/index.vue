@@ -38,15 +38,15 @@
       </div>
     </div>
     <!-- end news -->
-    <!-- <view class='search'>
+    <!-- <div class='search'>
       <picker class="picker" bindchange="bindPickerChange" value="0" range="100">
-        <view class="pickercity darkgray f14">
+        <div class="pickercity darkgray f14">
           柳州
-          <image class="image" src='/images/down_pick.png'/>
-        </view>
+          <image mode="aspectFill" class="image" src="/static/assets/arrowright.png"/>
+        </div>
       </picker>
       <input class='search-input f14' type='text' confirm-type="search" bindconfirm="search" placeholder="输入门店名称或地址搜索" />
-    </view> -->
+    </div> -->
   </div>
 </template>
 <script>
