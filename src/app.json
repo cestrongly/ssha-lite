@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/contact/main",
-    "pages/index/main"
-    
+    "pages/index/main",
+    "pages/product/main",
+    "pages/contact/main"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -20,6 +20,12 @@
         "text": "公司盛况",
         "iconPath": "static/assets/index.png",
         "selectedIconPath": "static/assets/index-selected.png"
+      },
+      {
+        "pagePath": "pages/product/main",
+        "text": "产品服务",
+        "iconPath": "static/assets/product.png",
+        "selectedIconPath": "static/assets/product-selected.png"
       },
       {
         "pagePath": "pages/contact/main",

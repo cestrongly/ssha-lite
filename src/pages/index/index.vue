@@ -7,7 +7,10 @@
               :autoplay="autoplay"
               :interval="interval"
               :duration="duration">
-        <swiper-item class="swiper-item" v-for="(item,index) in swipers" :key="index">
+        <swiper-item 
+          class="swiper-item" 
+          v-for="(item,index) in swipers" 
+          :key="index">
           <navigator :url="item.link" class="widget">
             <image mode="cover" :src="item.pic" class="slide-image"/>
           </navigator>
@@ -16,42 +19,27 @@
     </div>
     <!-- end swiper -->
     <!-- news -->
-    <div class="news">
-      <text class="news-title">新闻动态</text>
-      <navigator  v-for="(item,index) in news" :key="index" class="news-item__wrapper" :url="'/pages/news/news-details?id=' + item.id">
-        <div class="news-item line">
-          <div class="news-item-pic">
-            <image mode="widthFix" :src="item.pic" class="news-item-image"/>
-          </div>
-          <div class="news-item-words">
-            <div class="news-item-title"><text class="text">{{item.title}}</text></div>
-            <div class="news-item-content"><text class="text">{{item.content}}</text></div>
-          </div>  
-        </div>
-      </navigator>
+    <news :newsTitle="news_title" :news="news">
       <div class="widgets__list widgets__list_show">
         <navigator class="widget__more">
           <text class="new-more">查看更多</text>
-          <image class="widget__arrow" src="/static/assets/arrowright.png" mode="aspectFill"/>
+          <image class="widget__arrow" src="/static/assets/arrowright.png" mode="aspectFill" />
           <div class="widget__line widget__line_first"></div>
         </navigator>
       </div>
-    </div>
+    </news>
     <!-- end news -->
-    <!-- <div class='search'>
-      <picker class="picker" bindchange="bindPickerChange" value="0" range="100">
-        <div class="pickercity darkgray f14">
-          柳州
-          <image mode="aspectFill" class="image" src="/static/assets/arrowright.png"/>
-        </div>
-      </picker>
-      <input class='search-input f14' type='text' confirm-type="search" bindconfirm="search" placeholder="输入门店名称或地址搜索" />
-    </div> -->
   </div>
 </template>
 <script>
 import './index.scss'
+// 导入 News 组件
+import News from '@/components/news'
 export default {
+  components: {
+    // 声明在当前组件下使用 News 组件
+    News
+  },
   data () {
     return {
       title: '江苏盛世华安智能科技有限公司',
@@ -63,7 +51,7 @@ export default {
       autoplay: false,
       interval: 5000,
       duration: 1000,
-      // 新闻动态
+      news_title: '新闻动态',
       news: [
         {
           'id': 0,
