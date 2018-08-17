@@ -3,9 +3,9 @@
   <div class="news">
     <text class="news-title">{{title}}</text>
     <navigator 
-      v-for="(item,index) in news" 
+      v-for="(item,index) in newsComputed" 
       :key="index" class="news-item__wrapper" 
-      :url="'/pages/news/news-details?id=' + item.id">
+      :url="item.url">
       <div class="news-item line">
         <div class="news-item-pic">
           <image mode="widthFix" 
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 export default {
   // 增加一个可从外部传入的属性initNum
   props: {
@@ -47,8 +48,32 @@ export default {
       news: this.news
     }
   },
-
+  // mpvue 不支持过滤器
+  filters: {
+    url (id) {
+      return `/pages/news/news-details?id=${id}`
+    }
+  },
+  computed: {
+    // mpvue 不支持模板绑定函数
+    getUrl () {
+      return (id) => {
+        return `/pages/news/news-details?id=${id}`
+      }
+    },
+    newsComputed () {
+      return _.map(this.news, (value) => {
+        let obj = value
+        obj.url = `/pages/news/news-details?id=${value.id}`
+        return obj
+      })
+    }
+  },
   methods: {
+    // mpvue 不支持模板绑定函数
+    getUrl (id) {
+      return `/pages/news/news-details?id=${id}`
+    }
   }
 }
 </script>
