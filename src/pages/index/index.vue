@@ -21,7 +21,7 @@
     <!-- news -->
     <news :newsTitle="news_title" :news="news">
       <div class="widgets__list widgets__list_show">
-        <navigator class="widget__more">
+        <navigator class="widget__more" url="/pages/news/main">
           <text class="new-more">查看更多</text>
           <image class="widget__arrow" src="/static/assets/arrowright.png" mode="aspectFill" />
           <div class="widget__line widget__line_first"></div>

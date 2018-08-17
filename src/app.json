@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/main",
+    "pages/news/main",
     "pages/product/main",
     "pages/contact/main"
   ],
