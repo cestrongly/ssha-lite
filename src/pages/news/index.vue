@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import './style.scss'
+import './style.stylus'
 // 导入 News 组件
 import News from '@/components/news'
 export default {

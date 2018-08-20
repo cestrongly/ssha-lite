@@ -1,13 +1,11 @@
-<template>
-  <div class="page">
-    <div class="page__bd">
-      <news :newsTitle="prducts_title" :news="products"></news>
-      <news :newsTitle="services_title" :news="services"></news>
-    </div>
-  </div>
+<template lang="pug">
+  .page
+    .page__bd
+      news(:newsTitle="prducts_title", :news="products")
+      news(:newsTitle="services_title", :news="services")
 </template>
 <script>
-import './style.scss'
+import './style.stylus'
 // 导入 News 组件
 import News from '@/components/news'
 export default {

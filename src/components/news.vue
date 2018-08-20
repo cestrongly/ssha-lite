@@ -2,7 +2,7 @@
   //- news
   .news
     text.news-title {{title}}
-    a.news-item__wrapper( 
+    navigator.news-item__wrapper( 
       v-for="(item,index) in newsComputed", 
       :key="index",
       :url="item.url")

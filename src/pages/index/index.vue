@@ -1,38 +1,35 @@
-<template>
-  <div class="index">
-    <!-- slider -->
-    <div class="slider">
-      <swiper class="swiper"
-              :indicator-dots="indicatorDots"
-              :autoplay="autoplay"
-              :interval="interval"
-              :duration="duration">
-        <swiper-item 
-          class="swiper-item" 
-          v-for="(item,index) in swipers" 
-          :key="index">
-          <navigator :url="item.link" class="widget">
-            <image mode="cover" :src="item.pic" class="slide-image"/>
-          </navigator>
-        </swiper-item>
-      </swiper>  
-    </div>
-    <!-- end swiper -->
-    <!-- news -->
-    <news :newsTitle="news_title" :news="news">
-      <div class="widgets__list widgets__list_show">
-        <navigator class="widget__more" url="/pages/news/main">
-          <text class="new-more">查看更多</text>
-          <image class="widget__arrow" src="/static/assets/arrowright.png" mode="aspectFill" />
-          <div class="widget__line widget__line_first"></div>
-        </navigator>
-      </div>
-    </news>
-    <!-- end news -->
-  </div>
+<template lang="pug">
+  .index
+    //-slider
+    .slider
+      swiper.swiper(
+        :indicator-dots="indicatorDots",
+        :autoplay="autoplay",
+        :interval="interval",
+        :duration="duration")
+        swiper-item.swiper-item(
+          v-for="(item,index) in swipers",
+          :key="index")
+          a.widget(:url="item.link")
+            img.slide-image(
+              mode="cover",
+              :src="item.pic")
+    //- end swiper
+    //- news
+    news(
+      :newsTitle="news_title",
+      :news="news")
+      .widgets__list.widgets__list_show
+        navigator.widget__more(url="/pages/news/main")
+          text.new-more 查看更多
+          img.widget__arrow(
+            src="/static/assets/arrowright.png",
+            mode="aspectFill")
+          .widget__line.widget__line_first
+    //- end news 
 </template>
 <script>
-import './style.scss'
+import './style.stylus'
 // 导入 News 组件
 import News from '@/components/news'
 export default {
