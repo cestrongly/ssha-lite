@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/news/main",
+    "pages/news-detail/main",
     "pages/product/main",
     "pages/contact/main"
   ],

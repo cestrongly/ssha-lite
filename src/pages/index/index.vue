@@ -32,7 +32,7 @@
   </div>
 </template>
 <script>
-import './index.scss'
+import './style.scss'
 // 导入 News 组件
 import News from '@/components/news'
 export default {
